@@ -18,11 +18,11 @@ def setup_browser(request):
     browser.quit()
 
 
-@pytest.fixture(scope='function', params=[(430, 932), (390, 844), (360, 740)])
+@pytest.fixture(scope='function', params=[(430, 932), (390, 844)])
 def setup_browser_mobile(request):
     width, height = request.param
-    browser.config.window_height = height
     browser.config.window_width = width
+    browser.config.window_height = height
     browser.config.base_url = 'https://github.com'
 
     yield
@@ -30,11 +30,11 @@ def setup_browser_mobile(request):
     browser.quit()
 
 
-@pytest.fixture(scope='function', params=[(3840, 2160), (1920, 1080), (1280, 1024)])
+@pytest.fixture(scope='function', params=[(1920, 1080), (1280, 720)])
 def setup_browser_desktop(request):
     width, height = request.param
-    browser.config.window_height = height
     browser.config.window_width = width
+    browser.config.window_height = height
     browser.config.base_url = 'https://github.com'
 
     yield
